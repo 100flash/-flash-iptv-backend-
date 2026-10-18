@@ -3,7 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 import requests
 
 app = FastAPI()
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
@@ -11,7 +17,7 @@ def home():
 
 @app.post("/login")
 def login(data: dict):
-    url = data.get("url") # http://tu-server.com:8080
+    url = data.get("url")
     user = data.get("user")
     pwd = data.get("pass")
     try:
